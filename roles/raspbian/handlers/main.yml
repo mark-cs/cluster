@@ -1,0 +1,16 @@
+---
+
+- name: update-locale
+  command: "update-locale LANG={{ system_locale }}"
+
+- name: restart sshd
+  service:
+    name: ssh
+    state: restarted
+
+- name: reload ufw
+  ufw:
+    state: reloaded
+
+- name: reboot host
+  reboot:

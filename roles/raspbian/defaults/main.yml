@@ -1,0 +1,30 @@
+---
+
+system_hostname: "raspberrypi"
+system_ssh_user_password: "raspberry"
+system_ssh_user_salt: "salt"
+system_locale: "en_US.UTF-8"
+system_timezone: "Europe/Stockholm"
+system_tmpfs_mounts:
+  - { src: "/run", size: "10%", options: "nodev,noexec,nosuid" }
+  - { src: "/tmp", size: "10%", options: "nodev,nosuid" }
+  - { src: "/var/log", size: "10%", options: "nodev,noexec,nosuid" }
+
+system_packages: []
+system_default_editor_path: "/usr/bin/vi"
+
+rpi_boot_config: {}
+rpi_cmdline_config: {}
+
+ssh_sshd_config: "/etc/ssh/sshd_config"
+ssh_public_keys: []
+ssh_banner:
+
+ufw_rules:
+  - {rule: "allow", port: "22", proto: "tcp"}
+
+ufw_allow_igmp: false
+
+unattended_upgrades_email_address: root
+
+ansible_raspbian_testing: false

@@ -1,0 +1,9 @@
+---
+
+- name: ensure that lastlog-file exists
+  template:
+    src: tmpfiles/var-lastlog.conf.j2
+    dest: /etc/tmpfiles.d/var-lastlog.conf
+    owner: root
+    group: root
+    mode: 0644

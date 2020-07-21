@@ -1,0 +1,19 @@
+---
+
+- name: configure raspi-config values
+  command: "raspi-config nonint do_{{ item.key }} {{ item.value }}"
+  with_dict: "{{ rpi_cmdline_config }}"
+  when: >
+    rpi_cmdline_config is defined
+  notify:
+    - reboot host
+
+- name: update /boot/config.txt
+  lineinfile:
+    dest: /boot/config.txt
+    regexp: "^#?{{ item.key }}="
+    line: "{{ item.key }}={{ item.value }}"
+  with_dict: "{{ rpi_boot_config }}"
+  when: rpi_boot_config|length > 0
+  notify:
+    - reboot host
