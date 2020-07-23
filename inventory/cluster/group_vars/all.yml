@@ -1,7 +1,7 @@
 ---
 k3s_version: v1.18.6+k3s1
 systemd_dir: /etc/systemd/system
-master_ip: "{{ hostvars[groups['master'][0]]['ansible_host'] | default(groups['master'][0]) }}"
+master_ip: "{{ hostvars[groups['cluster_master'][0]]['system_hostname'] | default(groups['cluster_master'][0]) }}"
 extra_server_args: ""
 
 system_locale: "en_GB.UTF-8"
@@ -9,9 +9,17 @@ system_timezone: "Europe/London"
 system_packages: [vim]
 system_default_editor_path: /usr/bin/vi
 
+extra_server_args: "--disable traefik"
+
 ansible_connection: ssh
 ansible_user: pi
 
 rpi_cmdline_config:
   expand_rootfs: ""
   memory_split: 16
+
+ufw_rules:
+  - {rule: "allow", port: "22", proto: "tcp"}
+  - {rule: "allow", port: "6443", proto: "tcp"}
+  - {rule: "allow", port: "8472", proto: "tcp"}
+  - {rule: "allow", port: "10250", proto: "tcp"}

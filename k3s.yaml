@@ -4,3 +4,18 @@
   become: yes
   roles:
   - role: raspbian
+
+- hosts: cluster
+  become: yes
+  roles:
+  - role: k3s/prereq
+
+- hosts: cluster_master
+  become: yes
+  roles:
+  - role: k3s/master
+
+- hosts: cluster_node
+  become: yes
+  roles:
+  - role: k3s/node

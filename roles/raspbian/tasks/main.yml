@@ -17,10 +17,6 @@
   tags:
     - mount
 
-# - import_tasks: user.yml
-#   tags:
-#     - user
-
 - import_tasks: alternatives.yml
   tags:
     - alternatives

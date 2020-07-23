@@ -4,6 +4,7 @@
   apt:
     package: ufw
     state: present
+  tags: firewall
 
 - name: configure ufw defaults
   ufw:
@@ -15,6 +16,7 @@
   when: ufw_rules|length > 0
   notify:
     - reload ufw
+  tags: firewall
 
 - name: allow IGMP {{ ufw_allow_igmp }}
   blockinfile:
@@ -28,6 +30,7 @@
   when: ufw_allow_igmp|bool
   notify:
     - reload ufw
+  tags: firewall
 
 - name: configure ufw rules
   ufw:
@@ -40,8 +43,10 @@
   when: ufw_rules|length > 0
   notify:
     - reload ufw
+  tags: firewall
 
 - name: enable ufw
   ufw:
     state: enabled
   when: not ansible_raspbian_testing
+  tags: firewall
