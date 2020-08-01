@@ -6,10 +6,9 @@ extra_server_args: ""
 
 system_locale: "en_GB.UTF-8"
 system_timezone: "Europe/London"
-system_packages: [vim]
+system_packages:
+- vim
 system_default_editor_path: /usr/bin/vi
-
-extra_server_args: "--disable traefik"
 
 ansible_connection: ssh
 ansible_user: pi
@@ -17,9 +16,3 @@ ansible_user: pi
 rpi_cmdline_config:
   expand_rootfs: ""
   memory_split: 16
-
-ufw_rules:
-  - {rule: "allow", port: "22", proto: "tcp"}
-  - {rule: "allow", port: "6443", proto: "tcp"}
-  - {rule: "allow", port: "8472", proto: "tcp"}
-  - {rule: "allow", port: "10250", proto: "tcp"}

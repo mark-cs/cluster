@@ -1,0 +1,6 @@
+---
+- name: Read kubeconfig from remote to local
+  fetch:
+    src: /etc/rancher/k3s/k3s.yaml
+    dest: ~/.kube/config
+    flat: yes

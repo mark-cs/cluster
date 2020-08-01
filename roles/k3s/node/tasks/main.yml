@@ -1,5 +1,17 @@
 ---
 
+- name: Check if k3s-node service exists
+  stat: path={{ systemd_dir }}/k3s-node.service
+  register: k3s_node_service_status
+
+- name: Stop k3s-node service if present
+  systemd:
+    name: k3s-node
+    daemon_reload: yes
+    state: restarted
+    enabled: yes
+  when: k3s_node_service_status.stat.exists
+  
 - name: Copy K3s service file
   template:
     src: "k3s.service.j2"

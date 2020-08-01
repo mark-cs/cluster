@@ -17,10 +17,6 @@
   tags:
     - mount
 
-- import_tasks: alternatives.yml
-  tags:
-    - alternatives
-
 - import_tasks: tmpfiles.yml
   tags:
     - tmpfiles
@@ -28,10 +24,6 @@
 - import_tasks: ssh.yml
   tags:
     - ssh
-
-- import_tasks: ufw.yml
-  tags:
-    - ufw
 
 - import_tasks: pi.yml
   tags:

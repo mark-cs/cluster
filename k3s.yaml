@@ -19,3 +19,8 @@
   become: yes
   roles:
   - role: k3s/node
+
+- hosts: cluster_master
+  become: yes
+  roles:
+  - role: k3s/kubeconfig
