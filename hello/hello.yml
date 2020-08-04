@@ -1,0 +1,62 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-http-server
+  namespace: example
+  labels:
+    app: hello-world-http-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-world-http-server
+  template:
+    metadata:
+      labels:
+        app: hello-world-http-server
+    spec:
+      containers:
+        - name: hello-world-http-server
+          image: markdashcs/hello-world-http-server:arm32v7-1.0.0
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world-http-server
+  namespace: example
+  labels:
+    app: hello-world-http-server
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+    name: tcp
+  selector:
+    app: hello-world-http-server
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: hello-world-http-server
+  namespace: example
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    cert-manager.io/cluster-issuer: ca-issuer
+spec:
+  rules:
+  - host: hello.home
+    http:
+      paths:
+      - path:
+        backend:
+          serviceName: hello-world-http-server
+          servicePort: 8080
+  tls:
+  - hosts:
+    - hello.home
+    secretName: hello-home-cert

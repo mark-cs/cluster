@@ -17,3 +17,8 @@
   when: rpi_boot_config|length > 0
   notify:
     - reboot host
+
+- name: Update kernel
+  shell: "SKIP_WARNING=1 /usr/bin/rpi-update"
+  notify:
+    - reboot host
