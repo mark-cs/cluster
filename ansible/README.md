@@ -1,6 +1,6 @@
 # Cluster Automation
 
-## Introduction
+## Introduction
 
 This repository contains the automation scripts for my k3s cluster.
 It uses [Ansible](https://www.ansible.com).

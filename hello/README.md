@@ -1,4 +1,4 @@
-# Test Service
+# Test Service
 
 This is a test service (expects cert-manager to be configured).
 It runs in the `example` namespace.

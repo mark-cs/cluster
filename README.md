@@ -1,6 +1,6 @@
 # Cluster Automation
 
-## Introduction
+## Introduction
 
 This repository contains the automation scripts for my k3s cluster.
 
@@ -8,7 +8,7 @@ This repository contains the automation scripts for my k3s cluster.
 
 See [ansible/README.md](ansible/README.md) for details.
 
-## Create CA Certificate
+## Create CA Certificate
 
 See [ca/README.md](ca/README.md) for details.
 
@@ -16,6 +16,6 @@ See [ca/README.md](ca/README.md) for details.
 
 See [cert-manager/README.md](cert-manager/README.md) for details.
 
-## Deploy Test Service
+## Deploy Test Service
 
 See [hello/README.md](hello/README.md) for details.

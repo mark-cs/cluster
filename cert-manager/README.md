@@ -1,6 +1,6 @@
-# Configure k3s and cert-manager with the CA Certificate
+# Configure k3s and cert-manager with the CA Certificate
 
-## Deploy cert-manager using arkade
+## Deploy cert-manager using arkade
 
 [arkade](https://github.com/alexellis/arkade), written by Alex Ellis, just makes this easy!
 
@@ -16,7 +16,7 @@ Then install cert-manager as follows:
 arkade install cert-manager
 ```
 
-## Deploy the CA certificate and create Cluster Issuer
+## Deploy the CA certificate and create Cluster Issuer
 
 Add `ca_crt` and `ca_key` variables to the Ansible variables.
 The values should be the base64 encoded versions of the `ca.pem` and `ca-key.pem` files from the output of the previous step.

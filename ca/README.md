@@ -1,4 +1,4 @@
-# CA Certificate
+# CA Certificate
 
 [cfssl](https://github.com/cloudflare/cfssl) is used to generate CA certificates.
 
